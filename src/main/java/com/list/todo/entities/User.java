@@ -1,10 +1,18 @@
 package com.list.todo.entities;
 
+import com.list.todo.dto.TaskRequestDTO;
+import com.list.todo.dto.UserRequestDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +20,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_user")
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 public class User {
 
 
@@ -23,53 +35,13 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy = "user")
     private List<Task> tasks = new ArrayList<>();
 
-    public User() {}
-
-    public User(int id, String name, String email, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
+    public User(UserRequestDTO userRequestDTO) {
+        this.name = userRequestDTO.getName();
+        this.email = userRequestDTO.getEmail();
+        this.password = userRequestDTO.getPassword();
     }
 
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

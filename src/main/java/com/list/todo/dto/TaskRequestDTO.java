@@ -1,11 +1,20 @@
 package com.list.todo.dto;
 
 import com.list.todo.entities.Status;
+import com.list.todo.entities.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class TaskRequestDTO {
 
     @NotBlank(message = "Nome da tarefa vazio")
@@ -16,55 +25,8 @@ public class TaskRequestDTO {
     private Status status;
     private LocalDate startDate;
     private LocalDate endDate;
+    @NotBlank
+    private User user;
 
-    public TaskRequestDTO() {
-    }
 
-    public TaskRequestDTO(String name, String description, Status status, LocalDate startDate, LocalDate endDate) {
-        this.name = name;
-        this.description = description;
-        this.status = status;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
 }

@@ -22,8 +22,8 @@ public class UserController {
     }
 
     @GetMapping("/getusers")
-    public List<UserResponseDTO> getUsers(@Valid @RequestBody UserRequestDTO userRequestDTO) {
-        return userService.getUsers(userRequestDTO);
+    public List<UserResponseDTO> getUsers() {
+        return userService.getUsers();
     }
     @PostMapping("/user/cadatrar")
     public ResponseEntity<?> addUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {

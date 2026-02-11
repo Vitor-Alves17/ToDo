@@ -21,13 +21,13 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<UserResponseDTO> getUsers(UserRequestDTO userRequestDTO) {
+    public List<UserResponseDTO> getUsers() {
         List<User> users = userRepository.findAll();
         List<UserResponseDTO> userResponseDTOs = users.stream().map(UserResponseDTO::new).toList();
         return userResponseDTOs;
     }
-    public UserResponseDTO cadastrarUser(UserRequestDTO userRequestDTO) {
-        User user = new User(userRequestDTO.getName(), userRequestDTO.getEmail(), userRequestDTO.getPassword());
+    public UserResponseDTO cadastrarUser(UserRequestDTO req) {
+        User user = new User(req);
         userRepository.save(user);
         return new UserResponseDTO(user);
     }

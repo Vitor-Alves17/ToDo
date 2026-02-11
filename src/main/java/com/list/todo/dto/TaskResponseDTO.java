@@ -2,6 +2,7 @@ package com.list.todo.dto;
 
 import com.list.todo.entities.Status;
 import com.list.todo.entities.Task;
+import com.list.todo.entities.User;
 
 import java.time.LocalDate;
 
@@ -12,6 +13,7 @@ public class TaskResponseDTO {
     private Status status;
     private LocalDate startDate;
     private LocalDate endDate;
+    private User user;
 
     public TaskResponseDTO(Task task) {
         this.name = task.getName();
@@ -19,6 +21,7 @@ public class TaskResponseDTO {
         this.status = task.getStatus();
         this.startDate = task.getStartDate();
         this.endDate = task.getEndDate();
+        this.user = task.getUser();
     }
 
     public String getName() {
@@ -49,6 +52,7 @@ public class TaskResponseDTO {
                 ", status=" + status +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
+                ", user=" + user +
                 '}';
     }
 }
