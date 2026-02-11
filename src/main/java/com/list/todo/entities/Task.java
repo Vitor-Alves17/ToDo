@@ -2,9 +2,7 @@ package com.list.todo.entities;
 
 
 import com.list.todo.dto.TaskRequestDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -19,6 +17,11 @@ public class Task {
     private Status status;
     private LocalDate startDate;
     private LocalDate endDate;
+
+
+    @ManyToOne
+    @JoinColumn(name  = "user_id")
+    private User user;
 
     public Task() {
     }
