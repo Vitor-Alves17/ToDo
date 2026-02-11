@@ -26,14 +26,14 @@ public class TaskController {
     public List<TaskResponseDTO> getTasks() {
         return taskService.getTasks();
     }
-    @GetMapping("/user/{user_id}/task")
-    public TaskResponseDTO getTaskByUser(@PathVariable int user_id){
-        return taskService.getTasksByUser(user_id);
+    @GetMapping("/user/{id}/task")
+    public TaskResponseDTO getTaskByUser(@PathVariable int id){
+        return taskService.getTasksByUser(id);
     }
 
-    @PostMapping("/user/{user_id}/task")
-    public ResponseEntity<?> addTask(@Valid @RequestBody TaskRequestDTO taskRequestDTO, @PathVariable int user_id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(taskService.addTask(taskRequestDTO, user_id));
+    @PostMapping("/user/{userId}/task")
+    public ResponseEntity<?> addTask(@Valid @RequestBody TaskRequestDTO taskRequestDTO, @PathVariable int userId) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskService.addTask(taskRequestDTO, userId));
     }
     @PutMapping("update/{id}")
     public ResponseEntity<?> updateTask(@Valid @RequestBody TaskRequestDTO taskRequestDTO, @PathVariable int id) {

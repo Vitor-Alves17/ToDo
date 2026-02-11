@@ -37,8 +37,8 @@ public class TaskService {
         return new TaskResponseDTO(taskRepository.findByUser(user));
     }
 
-    public TaskResponseDTO addTask(TaskRequestDTO taskRequestDTO, int user_id) {
-        User user = userRepository.findById(user_id).orElseThrow(() -> new RuntimeException("User o found"));
+    public TaskResponseDTO addTask(TaskRequestDTO taskRequestDTO, int userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User o found"));
         Task task = new Task(taskRequestDTO);
         task.setUser(user);
         taskRepository.save(task);

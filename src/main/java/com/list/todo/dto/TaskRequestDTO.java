@@ -25,7 +25,6 @@ public class TaskRequestDTO {
     private Status status;
     private LocalDate startDate;
     private LocalDate endDate;
-    @NotBlank
     private User user;
 
 
